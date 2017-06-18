@@ -181,7 +181,7 @@ void dummy(void){
  */
 int _write(int FD, char * outstr, int len){
 
-     CDC_Transmit_FS((uint8_t*)outstr,len); //start new transmit
+     while(CDC_Transmit_FS((uint8_t*)outstr,len) == USBD_BUSY); //start new transmit
  // for some reason printf() needs this recovery time
     //dummy();
      return len;
